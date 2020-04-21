@@ -10,15 +10,15 @@ const memberList = [{
 },
 {
   id: 2,
-  username: 'Nate',
-  email: 'nate@nate.com',
-  role: 'Web Dev Student'
+  username: 'Kade',
+  email: 'kade@kade.com',
+  role: 'Phone Salesman'
 },
 {
   id:3,
-  username: 'Joseph',
-  email: 'joseph@joseph.com',
-  role: 'TL'
+  username: 'Dalton',
+  email: 'dalton@dalton.com',
+  role: 'Student'
 }
 ];
 
@@ -36,25 +36,26 @@ function App() {
   const [members, setMembers] = useState(memberList)
   const [formValues, setFormValues] = useState(initialFormValues)
 
-  const onInputChange = evt =>{
+  const onInputChange = event =>{
 
-    const username = evt.target.name
-    const value = evt.target.value
+    const name = event.target.name
+    const value = event.target.value
 
     setFormValues({
       ...formValues,
-      [username]: value
+      [name]: value
     })
   }
-  const onSubmit = evt => {
-    evt.preventDefault()
+  const onSubmit = event => {
+    event.preventDefault()
 
     const newFriend = {
-    name: formValues.name,
+
+    username: formValues.username,
     email: formValues.email,
     role: formValues.role,
   }
-  setMembers([...members, newFriend])
+  setMembers([ ...members, newFriend ])
   setFormValues(initialFormValues)
   }
   return (
@@ -64,7 +65,7 @@ function App() {
       </header>
 
       {
-        memberList.map((member) =>{
+        members.map((member) =>{
           return <div className='member-list' key={member.id}>
 
           <h2>{member.username}</h2>
