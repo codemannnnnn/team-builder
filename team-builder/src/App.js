@@ -46,11 +46,13 @@ function App() {
       [name]: value
     })
   }
+  const rand = Math.random(100)
+  
   const onSubmit = event => {
     event.preventDefault()
 
     const newFriend = {
-
+    id: rand,
     username: formValues.username,
     email: formValues.email,
     role: formValues.role,
@@ -69,7 +71,7 @@ function App() {
           return <div className='member-list' key={member.id}>
 
           <h2>{member.username}</h2>
-          <div>Email: {member.email}</div>
+          <p>Email: {member.email}</p>
           <p>Role: {member.role}</p>
 
 
