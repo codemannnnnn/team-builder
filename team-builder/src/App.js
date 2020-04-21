@@ -1,15 +1,29 @@
 import React, {useState} from 'react';
 import './App.css';
+import Forms from './Forms'
 
 const memberList = [{
-  name: 'Cody',
+  id: 1,
+  username: 'Cody',
   email: 'cody@cody.com',
-  role: 'Web Dev'
+  role: 'Web Dev Student'
 },
+{
+  id: 2,
+  username: 'Nate',
+  email: 'nate@nate.com',
+  role: 'Web Dev Student'
+},
+{
+  id:3,
+  username: 'Joseph',
+  email: 'joseph@joseph.com',
+  role: 'TL'
+}
 ];
 
 const initialFormValues = {
-  name: '',
+  username: '',
   email: '',
   role: '',
 }
@@ -22,6 +36,27 @@ function App() {
   const [members, setMembers] = useState(memberList)
   const [formValues, setFormValues] = useState(initialFormValues)
 
+  const onInputChange = evt =>{
+
+    const username = evt.target.name
+    const value = evt.target.value
+
+    setFormValues({
+      ...formValues,
+      [username]: value
+    })
+  }
+  const onSubmit = evt => {
+    evt.preventDefault()
+
+    const newFriend = {
+    name: formValues.name,
+    email: formValues.email,
+    role: formValues.role,
+  }
+  setMembers([...members, newFriend])
+  setFormValues(initialFormValues)
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -30,9 +65,22 @@ function App() {
 
       {
         memberList.map((member) =>{
-          return <div key={member.name}>{member.name}</div>;
+          return <div className='member-list' key={member.id}>
+
+          <h2>{member.username}</h2>
+          <div>Email: {member.email}</div>
+          <p>Role: {member.role}</p>
+
+
+
+          </div>;
         })
       }
+      <Forms
+        values={formValues}
+        onInputChange={onInputChange}
+        onSubmit={onSubmit}
+       />
     </div>
   );
 }

@@ -1,5 +1,29 @@
 .App {
   text-align: center;
+
+}
+.member-list{
+  border:2px solid black;
+  width: 80%;
+  margin: 20px auto;
+  box-shadow: 0px 1px 6px -2px rgb(128, 127, 127);
+
+
+}
+
+.member-container{
+  border:2px solid green;
+  width: 50%;
+  margin: auto;
+}
+h1{
+  color: red;
+}
+h2{
+  color:blue
+}
+p{
+  color:lime;
 }
 /*
 .App-logo {
